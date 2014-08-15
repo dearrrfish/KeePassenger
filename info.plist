@@ -272,7 +272,7 @@
 				<string>// Retrieve password by uuid
 include_once("bootstrap.php");
 $password = new Get("{query}" , "/password");
-echo $password-&gt;execute()-&gt;password;</string>
+echo str_replace("$", "\\\$", $password-&gt;execute()-&gt;password);</string>
 				<key>type</key>
 				<integer>1</integer>
 			</dict>
@@ -513,7 +513,7 @@ echo Config::instance()-&gt;showToggle("title_only");</string>
 				<key>subtext</key>
 				<string>Set search only by titles</string>
 				<key>title</key>
-				<string>Title Only - Setttings</string>
+				<string>Title Only</string>
 				<key>type</key>
 				<integer>1</integer>
 				<key>withspace</key>
