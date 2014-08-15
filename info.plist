@@ -50,6 +50,8 @@
 				<string></string>
 			</dict>
 		</array>
+		<key>58E2625C-7472-4A0A-B636-833ABB931E65</key>
+		<array/>
 		<key>5D265F07-2C57-470B-AE67-33BBB7FC1C2D</key>
 		<array>
 			<dict>
@@ -97,7 +99,7 @@
 			</dict>
 			<dict>
 				<key>destinationuid</key>
-				<string>D20E8C28-76B6-40D0-A2B7-878DDB864171</string>
+				<string>9E48C6BE-272E-447C-8DCE-6F6489318560</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -141,14 +143,6 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>861F8A69-DEC4-4873-9D10-59B5B12C9354</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
 				<string>57BCEB84-AE71-48AF-A2D6-B3AC3076516B</string>
 				<key>modifiers</key>
 				<integer>0</integer>
@@ -179,7 +173,7 @@
 			</dict>
 			<dict>
 				<key>destinationuid</key>
-				<string>D20E8C28-76B6-40D0-A2B7-878DDB864171</string>
+				<string>9E48C6BE-272E-447C-8DCE-6F6489318560</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -302,16 +296,22 @@ echo str_replace("$", "\\\$", $password-&gt;execute()-&gt;password);</string>
 			<key>config</key>
 			<dict>
 				<key>escaping</key>
-				<integer>0</integer>
+				<integer>4</integer>
 				<key>script</key>
-				<string>echo "{query}" | pbcopy</string>
+				<string># escape \ and "
+q="{query}"
+q=${q//\\/\\\\\\\\}
+q=${q//\"/\\\\\\\"}
+
+# call script to copy result to application-specific clipboards
+osascript libs/copy.scpt $q</string>
 				<key>type</key>
 				<integer>0</integer>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.output.script</string>
 			<key>uid</key>
-			<string>D20E8C28-76B6-40D0-A2B7-878DDB864171</string>
+			<string>9E48C6BE-272E-447C-8DCE-6F6489318560</string>
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
@@ -395,20 +395,17 @@ echo $password-&gt;execute()-&gt;user;</string>
 			<key>config</key>
 			<dict>
 				<key>escaping</key>
-				<integer>127</integer>
+				<integer>0</integer>
 				<key>script</key>
-				<string>-- Clear clipboard#1 after {query} seconds
--- Be aware that Alfred has a clipboard history feature.
-
-delay {query}
-tell application "Finder" to set the clipboard to ""</string>
+				<string># clear clipboard#2 after {query} seconds
+sleep {query} | echo "" | pbcopy</string>
 				<key>type</key>
-				<integer>6</integer>
+				<integer>0</integer>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.output.script</string>
 			<key>uid</key>
-			<string>861F8A69-DEC4-4873-9D10-59B5B12C9354</string>
+			<string>57BCEB84-AE71-48AF-A2D6-B3AC3076516B</string>
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
@@ -434,18 +431,21 @@ echo Config::instance()-&gt;get("clear_delay");</string>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>escaping</key>
+				<key>argumenttype</key>
 				<integer>0</integer>
-				<key>script</key>
-				<string># clear clipboard#2 after {query} seconds
-sleep {query} | echo "" | pbcopy</string>
-				<key>type</key>
-				<integer>0</integer>
+				<key>keyword</key>
+				<string>ktest</string>
+				<key>subtext</key>
+				<string>Testing! Input: {query}</string>
+				<key>text</key>
+				<string>KeePass Test</string>
+				<key>withspace</key>
+				<true/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.output.script</string>
+			<string>alfred.workflow.input.keyword</string>
 			<key>uid</key>
-			<string>57BCEB84-AE71-48AF-A2D6-B3AC3076516B</string>
+			<string>58E2625C-7472-4A0A-B636-833ABB931E65</string>
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
@@ -759,32 +759,37 @@ echo $cacheUpdate-&gt;execute()-&gt;data;</string>
 		<key>02528AD9-3E96-4C75-8A52-1CA8D0FEFDC5</key>
 		<dict>
 			<key>ypos</key>
-			<real>670</real>
+			<real>1400</real>
 		</dict>
 		<key>3D3D4251-9E5E-4EAB-B3E4-235C2B31D5D1</key>
 		<dict>
 			<key>ypos</key>
-			<real>1230</real>
+			<real>1950</real>
 		</dict>
 		<key>3D7602C3-E893-42A3-9DAC-5729FB694B9B</key>
 		<dict>
 			<key>ypos</key>
-			<real>670</real>
+			<real>1400</real>
 		</dict>
 		<key>405F7303-E996-4857-8B41-07A07FE22B3E</key>
 		<dict>
 			<key>ypos</key>
-			<real>890</real>
+			<real>1620</real>
 		</dict>
 		<key>40BD1A10-DB43-4BEB-9303-C743716501D1</key>
 		<dict>
 			<key>ypos</key>
-			<real>780</real>
+			<real>1510</real>
 		</dict>
 		<key>57BCEB84-AE71-48AF-A2D6-B3AC3076516B</key>
 		<dict>
 			<key>ypos</key>
-			<real>540</real>
+			<real>490</real>
+		</dict>
+		<key>58E2625C-7472-4A0A-B636-833ABB931E65</key>
+		<dict>
+			<key>ypos</key>
+			<real>840</real>
 		</dict>
 		<key>5D265F07-2C57-470B-AE67-33BBB7FC1C2D</key>
 		<dict>
@@ -794,42 +799,42 @@ echo $cacheUpdate-&gt;execute()-&gt;data;</string>
 		<key>60353EF8-8505-4CC5-98EA-801E850EF533</key>
 		<dict>
 			<key>ypos</key>
-			<real>1230</real>
+			<real>1950</real>
 		</dict>
 		<key>6BCE73BB-B7D6-4EE5-9112-5FC69736AD95</key>
 		<dict>
 			<key>ypos</key>
-			<real>310</real>
+			<real>340</real>
 		</dict>
 		<key>712F85CA-0101-49F5-BD4A-7750FAE2DFFF</key>
 		<dict>
 			<key>ypos</key>
 			<real>60</real>
 		</dict>
-		<key>861F8A69-DEC4-4873-9D10-59B5B12C9354</key>
-		<dict>
-			<key>ypos</key>
-			<real>440</real>
-		</dict>
 		<key>9267BC8E-3BDB-46BE-950F-49B59EB41275</key>
 		<dict>
 			<key>ypos</key>
-			<real>1110</real>
+			<real>1840</real>
 		</dict>
 		<key>962DA074-26BF-41E5-92C7-AF2B544581D6</key>
 		<dict>
 			<key>ypos</key>
-			<real>1110</real>
+			<real>1840</real>
 		</dict>
 		<key>98DF7054-A5F1-4ADA-A2C2-0B876E2249AD</key>
 		<dict>
 			<key>ypos</key>
-			<real>890</real>
+			<real>1620</real>
 		</dict>
 		<key>9ABACD19-35C2-4AB3-87DC-145909E789EC</key>
 		<dict>
 			<key>ypos</key>
 			<real>10</real>
+		</dict>
+		<key>9E48C6BE-272E-447C-8DCE-6F6489318560</key>
+		<dict>
+			<key>ypos</key>
+			<real>230</real>
 		</dict>
 		<key>B6BF0E86-F990-4DF6-A178-B953501A31E5</key>
 		<dict>
@@ -839,42 +844,37 @@ echo $cacheUpdate-&gt;execute()-&gt;data;</string>
 		<key>C4FC94C0-40E1-4572-AC5A-40B1F53DECD8</key>
 		<dict>
 			<key>ypos</key>
-			<real>110</real>
-		</dict>
-		<key>D20E8C28-76B6-40D0-A2B7-878DDB864171</key>
-		<dict>
-			<key>ypos</key>
-			<real>210</real>
+			<real>120</real>
 		</dict>
 		<key>D945D4CB-8754-49ED-8BBE-7736B3DC344C</key>
 		<dict>
 			<key>ypos</key>
-			<real>780</real>
+			<real>1510</real>
 		</dict>
 		<key>DD148F95-8E48-46A7-9426-7FDA9B04C058</key>
 		<dict>
 			<key>ypos</key>
-			<real>260</real>
+			<real>290</real>
 		</dict>
 		<key>EA838E5C-6C7A-454F-8600-F11ABB9AD329</key>
 		<dict>
 			<key>ypos</key>
-			<real>940</real>
+			<real>1660</real>
 		</dict>
 		<key>EB71EA97-3596-4DB7-9235-EF34952B0D08</key>
 		<dict>
 			<key>ypos</key>
-			<real>1230</real>
+			<real>1950</real>
 		</dict>
 		<key>EEF3F5CD-C04A-48A3-8992-C1FA91008FE2</key>
 		<dict>
 			<key>ypos</key>
-			<real>1000</real>
+			<real>1730</real>
 		</dict>
 		<key>FD1EDDF8-1AA3-40A7-8AE9-12523FE04E00</key>
 		<dict>
 			<key>ypos</key>
-			<real>1000</real>
+			<real>1730</real>
 		</dict>
 	</dict>
 	<key>webaddress</key>
