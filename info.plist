@@ -97,14 +97,6 @@
 				<key>modifiersubtext</key>
 				<string></string>
 			</dict>
-			<dict>
-				<key>destinationuid</key>
-				<string>9E48C6BE-272E-447C-8DCE-6F6489318560</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-			</dict>
 		</array>
 		<key>9267BC8E-3BDB-46BE-950F-49B59EB41275</key>
 		<array>
@@ -165,23 +157,15 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
+				<string>9ABACD19-35C2-4AB3-87DC-145909E789EC</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
 				<string>C4FC94C0-40E1-4572-AC5A-40B1F53DECD8</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
-				<string>9E48C6BE-272E-447C-8DCE-6F6489318560</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
-				<string>6BCE73BB-B7D6-4EE5-9112-5FC69736AD95</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -246,7 +230,7 @@
 				<key>sticky</key>
 				<false/>
 				<key>text</key>
-				<string>Password is copied and clipboard will be clear in a short time. (Notice: Alfred has a clipboard history feature!)</string>
+				<string>Username or Password is copied and clipboard will be clear in a short time. (Notice: Alfred has a clipboard history feature!)</string>
 				<key>title</key>
 				<string>KeePassenger</string>
 			</dict>
@@ -261,12 +245,12 @@
 			<key>config</key>
 			<dict>
 				<key>escaping</key>
-				<integer>0</integer>
+				<integer>32</integer>
 				<key>script</key>
 				<string>// Retrieve password by uuid
 include_once("bootstrap.php");
 $password = new Get("{query}" , "/password");
-echo str_replace("$", "\\\$", $password-&gt;execute()-&gt;password);</string>
+echo $password-&gt;execute()-&gt;password;</string>
 				<key>type</key>
 				<integer>1</integer>
 			</dict>
@@ -296,11 +280,11 @@ echo str_replace("$", "\\\$", $password-&gt;execute()-&gt;password);</string>
 			<key>config</key>
 			<dict>
 				<key>escaping</key>
-				<integer>4</integer>
+				<integer>68</integer>
 				<key>script</key>
 				<string># escape \ and "
 q="{query}"
-q=${q//\\/\\\\\\\\}
+q=${q//\\/\\\\\\}
 q=${q//\"/\\\\\\\"}
 
 # call script to copy result to application-specific clipboards
@@ -363,31 +347,6 @@ echo $password-&gt;execute()-&gt;user;</string>
 			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
 			<string>DD148F95-8E48-46A7-9426-7FDA9B04C058</string>
-			<key>version</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>lastpathcomponent</key>
-				<false/>
-				<key>onlyshowifquerypopulated</key>
-				<true/>
-				<key>output</key>
-				<integer>0</integer>
-				<key>removeextension</key>
-				<false/>
-				<key>sticky</key>
-				<false/>
-				<key>text</key>
-				<string>Username is copied and clipboard will be clear in a short time. (Notice: Alfred has a clipboard history feature!)</string>
-				<key>title</key>
-				<string>KeePassenger</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.notification</string>
-			<key>uid</key>
-			<string>6BCE73BB-B7D6-4EE5-9112-5FC69736AD95</string>
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
@@ -736,7 +695,7 @@ echo Config::instance()-&gt;setOption("clear_delay", "{query}", 60);</string>
 			<key>config</key>
 			<dict>
 				<key>escaping</key>
-				<integer>127</integer>
+				<integer>0</integer>
 				<key>script</key>
 				<string>include_once("bootstrap.php");
 $cacheUpdate = new CacheUpdate();
@@ -800,11 +759,6 @@ echo $cacheUpdate-&gt;execute()-&gt;data;</string>
 		<dict>
 			<key>ypos</key>
 			<real>1950</real>
-		</dict>
-		<key>6BCE73BB-B7D6-4EE5-9112-5FC69736AD95</key>
-		<dict>
-			<key>ypos</key>
-			<real>340</real>
 		</dict>
 		<key>712F85CA-0101-49F5-BD4A-7750FAE2DFFF</key>
 		<dict>

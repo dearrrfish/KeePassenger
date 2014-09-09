@@ -68,6 +68,7 @@ abstract class KSAPI
             ;
         $options = array(
             CURLOPT_CONNECTTIMEOUT => 5,     // set curl timeout to 5 sec.
+            CURLOPT_IPRESOLVE => CURL_IPRESOLVE_V4,
         );
 
         $this->_response = @json_decode($this->_w->request($this->_url, $options));
